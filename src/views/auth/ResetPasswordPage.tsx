@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { SeoHelmet } from '../../components/index';
 
-export default function ResetPasswordPage() {
+const ResetPasswordPage: FC = () => {
   return (
     <>
       <SeoHelmet title='Reset Password' description='' image='' image_alt='' />
@@ -120,4 +120,6 @@ export default function ResetPasswordPage() {
       </div>
     </>
   );
-}
+};
+
+export default ResetPasswordPage;

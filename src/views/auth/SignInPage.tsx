@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { SeoHelmet } from '../../components/index';
 
-export default function SignInPage() {
+const SignInPage: FC = () => {
   return (
     <>
       <SeoHelmet title='Sign In' description='' image='' image_alt='' />
@@ -147,4 +147,6 @@ export default function SignInPage() {
       </div>
     </>
   );
-}
+};
+
+export default SignInPage;

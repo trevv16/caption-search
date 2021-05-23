@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-export default function Error404() {
+const Error404: FC = () => {
   return (
     <div className='h-screen w-screen bg-gray-100 flex items-center'>
       <div className='container flex flex-col md:flex-row items-center justify-center px-5 text-gray-700'>
@@ -17,4 +17,6 @@ export default function Error404() {
       </div>
     </div>
   );
-}
+};
+
+export default Error404;

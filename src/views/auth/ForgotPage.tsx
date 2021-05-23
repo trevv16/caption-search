@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { SeoHelmet } from '../../components/index';
 
-export default function ForgotPage() {
+const ForgotPage: FC = () => {
   return (
     <>
       <SeoHelmet title='Forgot Password' description='' image='' image_alt='' />
@@ -105,4 +105,6 @@ export default function ForgotPage() {
       </div>
     </>
   );
-}
+};
+
+export default ForgotPage;
