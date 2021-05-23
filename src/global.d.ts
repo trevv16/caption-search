@@ -1,8 +1,8 @@
 type PageProps = {
-  route: string;
+  path: string;
   title: string;
   description: string;
   image: string;
   image_alt: string;
-  component: React.ComponentType<any> | null;
+  component: any;
 };

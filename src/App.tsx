@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PublicApp from './PublicApp';
-import AuthenticatedApp from './AuthenticatedApp';
+// import AuthenticatedApp from './AuthenticatedApp';
 
 export default function App(props: any) {
   const [checkLoggedIn, setCheckLoggedIn] = useState(false);
@@ -18,5 +18,6 @@ export default function App(props: any) {
     return <PublicApp />;
   }
 
-  return <AuthenticatedApp />;
+  // return <AuthenticatedApp />;
+  return <PublicApp />;
 }

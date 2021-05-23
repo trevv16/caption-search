@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { HomePage, SignUpPage, SignInPage, ForgotPage, ResetPasswordPage, Error500, Error404 } from './views/index';
-import { Navigation, Footer, PublicLayout } from './components/index';
+import { PublicLayout } from './components/index';
 
 const SITE_NAME = 'Caption Search';
 const SITE_IMG = '';
@@ -10,7 +10,7 @@ const SITE_IMG_ALT = '';
 
 const pages = [
   {
-    route: '/',
+    path: '/',
     title: `${SITE_NAME}`,
     description: '',
     image: SITE_IMG,
@@ -18,7 +18,7 @@ const pages = [
     component: HomePage
   },
   {
-    route: '/signup',
+    path: '/signup',
     title: `Sign Up | ${SITE_NAME}`,
     description: '',
     image: SITE_IMG,
@@ -26,7 +26,7 @@ const pages = [
     component: SignUpPage
   },
   {
-    route: '/signin',
+    path: '/signin',
     title: `Sign In | ${SITE_NAME}`,
     description: '',
     image: SITE_IMG,
@@ -34,7 +34,7 @@ const pages = [
     component: SignInPage
   },
   {
-    route: '/forgot',
+    path: '/forgot',
     title: `Forgot Password | ${SITE_NAME}`,
     description: '',
     image: SITE_IMG,
@@ -42,7 +42,7 @@ const pages = [
     component: ForgotPage
   },
   {
-    route: '/reset-password/:resetToken',
+    path: '/reset-password/:resetToken',
     title: `Reset Password | ${SITE_NAME}`,
     description: '',
     image: SITE_IMG,
@@ -54,14 +54,13 @@ const pages = [
 export default function PublicApp() {
   return (
     <div>
-      <Navigation />
       <Router>
         <PublicLayout>
           <Switch>
             {/* Auth Routes */}
-            {pages.map((page: PageProps) => {
-              return <Route exact path={page.route} component={page.component} props={page} />;
-            })}
+            {pages.map((page: PageProps) => (
+              <Route exact {...page} />
+            ))}
 
             {/* Error Pages */}
             <Route exact path='/500' component={Error500} />
@@ -70,7 +69,6 @@ export default function PublicApp() {
           </Switch>
         </PublicLayout>
       </Router>
-      <Footer />
     </div>
   );
 }
