@@ -1,8 +1,7 @@
-import React, { useEffect, useState, FC } from 'react';
+import React, { FC } from 'react';
 import { SeoHelmet } from '../components/index';
-import { GoSearch } from 'react-icons/go';
 
-const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
+const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => {
   return (
     <>
       <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
@@ -13,4 +12,4 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
   );
 };
 
-export default HomePage;
+export default ViewResult;
