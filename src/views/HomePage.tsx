@@ -1,18 +1,19 @@
 import React, { useEffect, useState, FC } from 'react';
+import { useHistory } from 'react-router-dom';
 import { SeoHelmet } from '../components/index';
 import { GoSearch } from 'react-icons/go';
 
 const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
   const [url, setUrl] = useState<string>('');
-
-  useEffect(() => {
-    console.log('url:', url);
-  }, [url]);
+  const history = useHistory();
 
   const handleSearch = (e: any) => {
     e.preventDefault();
     if (url !== '') {
-      console.log('Searching...', url);
+      history.push({
+        pathname: '/results',
+        state: { url }
+      });
     }
   };
 
