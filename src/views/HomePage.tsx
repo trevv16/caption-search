@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, FC } from 'react';
+import React, { useEffect, useState, FC } from 'react';
 import { SeoHelmet } from '../components/index';
 import { GoSearch } from 'react-icons/go';
 
@@ -11,7 +11,9 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    console.log('Searching...', url);
+    if (url !== '') {
+      console.log('Searching...', url);
+    }
   };
 
   const handleInput = (event: any) => {
