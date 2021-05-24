@@ -1,4 +1,5 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { SITE_NAME, SITE_IMG, SITE_IMG_ALT } from './Config';
 import { HomePage, SignUpPage, SignInPage, ForgotPage, ResetPasswordPage, Error500, Error404 } from './views/index';
@@ -55,7 +56,7 @@ export default function PublicApp() {
           <Switch>
             {/* Auth Routes */}
             {pages.map((page: PageProps) => (
-              <Route exact {...page} />
+              <Route key={nanoid()} exact {...page} />
             ))}
 
             {/* Error Pages */}
