@@ -1,4 +1,5 @@
 export { default as HomePage } from './HomePage';
+export { default as ViewResult } from './ViewResult';
 
 // Error Pages
 export { default as Error404 } from './error/Error404';

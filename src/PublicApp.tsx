@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { SITE_NAME, SITE_IMG, SITE_IMG_ALT } from './Config';
-import { HomePage, SignUpPage, SignInPage, ForgotPage, ResetPasswordPage, Error500, Error404 } from './views/index';
+import { HomePage, ViewResult, Error500, Error404 } from './views/index';
 import { PublicLayout } from './components/index';
 
 const pages = [
@@ -15,37 +15,45 @@ const pages = [
     component: HomePage
   },
   {
-    path: '/signup',
-    title: `Sign Up | ${SITE_NAME}`,
+    path: '/results',
+    title: `Results | ${SITE_NAME}`,
     description: '',
     image: SITE_IMG,
     image_alt: SITE_IMG_ALT,
-    component: SignUpPage
-  },
-  {
-    path: '/signin',
-    title: `Sign In | ${SITE_NAME}`,
-    description: '',
-    image: SITE_IMG,
-    image_alt: SITE_IMG_ALT,
-    component: SignInPage
-  },
-  {
-    path: '/forgot',
-    title: `Forgot Password | ${SITE_NAME}`,
-    description: '',
-    image: SITE_IMG,
-    image_alt: SITE_IMG_ALT,
-    component: ForgotPage
-  },
-  {
-    path: '/reset-password/:resetToken',
-    title: `Reset Password | ${SITE_NAME}`,
-    description: '',
-    image: SITE_IMG,
-    image_alt: SITE_IMG_ALT,
-    component: ResetPasswordPage
+    component: ViewResult
   }
+  // {
+  //   path: '/signup',
+  //   title: `Sign Up | ${SITE_NAME}`,
+  //   description: '',
+  //   image: SITE_IMG,
+  //   image_alt: SITE_IMG_ALT,
+  //   component: SignUpPage
+  // },
+  // {
+  //   path: '/signin',
+  //   title: `Sign In | ${SITE_NAME}`,
+  //   description: '',
+  //   image: SITE_IMG,
+  //   image_alt: SITE_IMG_ALT,
+  //   component: SignInPage
+  // },
+  // {
+  //   path: '/forgot',
+  //   title: `Forgot Password | ${SITE_NAME}`,
+  //   description: '',
+  //   image: SITE_IMG,
+  //   image_alt: SITE_IMG_ALT,
+  //   component: ForgotPage
+  // },
+  // {
+  //   path: '/reset-password/:resetToken',
+  //   title: `Reset Password | ${SITE_NAME}`,
+  //   description: '',
+  //   image: SITE_IMG,
+  //   image_alt: SITE_IMG_ALT,
+  //   component: ResetPasswordPage
+  // }
 ];
 
 export default function PublicApp() {
