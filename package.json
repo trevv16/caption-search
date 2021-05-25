@@ -5,6 +5,7 @@
   "dependencies": {
     "@craco/craco": "^6.1.2",
     "@headlessui/react": "^1.2.0",
+    "@os-team/youtube-captions": "^1.0.10",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/forms": "^0.2.1",
     "@tailwindcss/typography": "^0.4.0",
@@ -13,6 +14,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "nanoid": "^3.1.23",
+    "query-string": "^4.3.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet-async": "^1.0.9",
@@ -21,7 +23,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "ytfps": "^1.0.5"
   },
   "scripts": {
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
