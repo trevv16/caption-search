@@ -2,18 +2,10 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { SITE_NAME, SITE_IMG, SITE_IMG_ALT } from './Config';
-import { HomePage, ViewResult, Error500, Error404 } from './views/index';
+import { HomePage, ViewResult, ViewPlaylist, Error500, Error404 } from './views/index';
 import { PublicLayout } from './components/index';
 
 const pages = [
-  {
-    path: '/',
-    title: `${SITE_NAME}`,
-    description: '',
-    image: SITE_IMG,
-    image_alt: SITE_IMG_ALT,
-    component: HomePage
-  },
   {
     path: '/results',
     title: `Results | ${SITE_NAME}`,
@@ -21,6 +13,22 @@ const pages = [
     image: SITE_IMG,
     image_alt: SITE_IMG_ALT,
     component: ViewResult
+  },
+  {
+    path: '/playlist',
+    title: `Playlist Videos | ${SITE_NAME}`,
+    description: '',
+    image: SITE_IMG,
+    image_alt: SITE_IMG_ALT,
+    component: ViewPlaylist
+  },
+  {
+    path: '/',
+    title: `${SITE_NAME}`,
+    description: '',
+    image: SITE_IMG,
+    image_alt: SITE_IMG_ALT,
+    component: HomePage
   }
   // {
   //   path: '/signup',
@@ -64,7 +72,7 @@ export default function PublicApp() {
           <Switch>
             {/* Auth Routes */}
             {pages.map((page: PageProps) => (
-              <Route key={nanoid()} exact {...page} />
+              <Route key={nanoid()} {...page} />
             ))}
 
             {/* Error Pages */}
