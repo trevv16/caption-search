@@ -1,7 +1,9 @@
-import React, { useEffect, useState, FC } from 'react';
+import React, { useState, FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { SeoHelmet } from '../components/index';
 import { GoSearch } from 'react-icons/go';
+
+import { isPlaylist } from '../utils/youtube';
 
 const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
   const [url, setUrl] = useState<string>('');
@@ -9,12 +11,13 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
 
   const handleSearch = (e: any) => {
     e.preventDefault();
-    if (url !== '') {
-      history.push({
-        pathname: '/results',
-        state: { url }
-      });
+    if (url === '') return;
+
+    if (isPlaylist(url)) {
+      return history.push(`/playlist?url=${url}`);
     }
+
+    history.push(`/results?url=${url}`);
   };
 
   const handleInput = (event: any) => {
