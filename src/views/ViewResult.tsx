@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
 import { SeoHelmet, VideoCaptions } from '../components/index';
-import ReactPlayer from 'react-player/lazy';
+import ReactPlayer from 'react-player/youtube';
 import { useLocation } from 'react-router-dom';
 import { stripUrlParam, getvideoCaptions } from '../utils/youtube';
 
@@ -28,7 +28,6 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
     getvideoCaptions(id).then((result) => {
       if (result === undefined || result === null) return;
       const captionData = result?.data.body;
-      console.log(captionData);
       setCaptions(captionData);
     });
 
