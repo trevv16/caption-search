@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FC } from 'react';
-import { SeoHelmet } from '../components/index';
-import ReactPlayer from 'react-player/youtube';
+import { SeoHelmet, VideoCaptions } from '../components/index';
+import ReactPlayer from 'react-player/lazy';
 import { useLocation } from 'react-router-dom';
 import { stripUrlParam } from '../utils/youtube';
 
@@ -26,13 +26,37 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
     }
   }, [urlParam]);
 
+  const captionData = [
+    {
+      start: '8.208',
+      dur: '3.459',
+      text: 'And in a year that tested everyone around the world'
+    },
+    {
+      start: '8.208',
+      dur: '3.459',
+      text: 'And in a year that tested everyone around the world'
+    },
+    {
+      start: '8.208',
+      dur: '3.459',
+      text: 'And in a year that tested everyone around the world'
+    },
+    {
+      start: '8.208',
+      dur: '3.459',
+      text: 'And in a year that tested everyone around the world'
+    }
+  ];
+
   return (
     <>
       <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='max-w-3xl mx-auto my-80'>
-          <ReactPlayer url={searchUrl} />
+        <div className='max-w-3xl mx-auto mt-56 mb-24'>
+          <ReactPlayer url={searchUrl} width='100%' />
         </div>
+        <VideoCaptions captions={captionData} />
       </div>
     </>
   );
