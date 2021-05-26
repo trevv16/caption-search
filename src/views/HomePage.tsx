@@ -36,8 +36,8 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
                   <GoSearch className='h-5 w-5 text-gray-400' aria-hidden='true' />
                 </div>
                 <input
-                  id='email'
-                  name='email'
+                  id='url'
+                  name='url'
                   type='text'
                   onChange={handleInput}
                   value={url}
