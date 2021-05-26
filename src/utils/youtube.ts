@@ -1,6 +1,6 @@
 import api from './api';
 import { LAMBDA_URL } from '../Config';
-const ytch = require('yt-channel-info');
+// const ytch = require('yt-channel-info');
 const queryString = require('query-string');
 
 const isPlaylist = (url: string): boolean => {
@@ -9,16 +9,15 @@ const isPlaylist = (url: string): boolean => {
 
 const getChannelInfo = (channelId: string) => {
   // const data: any = await api.fetch(`${LAMBDA_URL}/channelInfo?channelId=${channelId}`);
-
   // return data;
-  ytch
-    .getChannelInfo(channelId)
-    .then((response: any) => {
-      return response;
-    })
-    .catch((err: any) => {
-      console.log(err);
-    });
+  // ytch
+  //   .getChannelInfo(channelId)
+  //   .then((response: any) => {
+  //     return response;
+  //   })
+  //   .catch((err: any) => {
+  //     console.log(err);
+  //   });
 };
 
 const getPlaylistData = async (playlistId: string) => {
