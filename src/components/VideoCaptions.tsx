@@ -24,9 +24,9 @@ export default function VideoCaptions(props: any) {
           </h1>
           <h2>
             <span className='font-medium'>Duration:</span>
-            {line.dur}
+            {line.duration}
           </h2>
-          <p className='mt-2 text-md font-medium pb-6 border-b'>{line.text}</p>
+          <p className='text-black mt-2 text-xl font-bold pb-6 border-b'>{line.text}</p>
         </div>
       );
     });
