@@ -21,11 +21,10 @@ function queryString(params: any) {
 }
 
 function fetch(url: string, params = {}) {
-  return axios.get(`${API}/${url}${queryString(params)}`, {
-    headers: headers()
-  });
+  return axios.get(`${url}${queryString(params)}`);
 }
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   fetch(url: string, params = {}) {
     return fetch(url, params);
