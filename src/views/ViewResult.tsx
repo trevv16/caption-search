@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC } from 'react';
 import { SeoHelmet, VideoCaptions } from '../components/index';
 import ReactPlayer from 'react-player/lazy';
 import { useLocation } from 'react-router-dom';
-import { stripUrlParam } from '../utils/youtube';
+import { stripUrlParam, getvideoCaptions } from '../utils/youtube';
 
 /**
  * https://www.youtube.com/watch?v=yHdLoVpzdcg
@@ -14,40 +14,33 @@ import { stripUrlParam } from '../utils/youtube';
 const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => {
   const location = useLocation();
   const urlParam = location.search;
-  const [searchUrl, setSearchUrl] = useState('');
+  const [searchUrl, setSearchUrl] = useState<string>('');
+  const [captions, setCaptions] = useState([]);
 
   useEffect(() => {
     if (urlParam === undefined) return;
 
     const url = stripUrlParam(urlParam, 'url');
+    const youtubeUrl = url.split('?')[1];
+    const id = stripUrlParam(youtubeUrl, 'v');
+
+    if (id === undefined || id === null) return;
+    getvideoCaptions(id).then((result) => {
+      if (result === undefined || result === null) return;
+      const captionData = result?.data.body;
+      console.log(captionData);
+      setCaptions(captionData);
+    });
 
     if (url) {
       setSearchUrl(url);
     }
-  }, [urlParam]);
 
-  const captionData = [
-    {
-      start: '8.208',
-      dur: '3.459',
-      text: 'And in a year that tested everyone around the world'
-    },
-    {
-      start: '8.208',
-      dur: '3.459',
-      text: 'And in a year that tested everyone around the world'
-    },
-    {
-      start: '8.208',
-      dur: '3.459',
-      text: 'And in a year that tested everyone around the world'
-    },
-    {
-      start: '8.208',
-      dur: '3.459',
-      text: 'And in a year that tested everyone around the world'
-    }
-  ];
+    return () => {
+      setSearchUrl('');
+      setCaptions([]);
+    };
+  }, [urlParam]);
 
   return (
     <>
@@ -56,7 +49,7 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
         <div className='max-w-3xl mx-auto mt-56 mb-24'>
           <ReactPlayer url={searchUrl} width='100%' />
         </div>
-        <VideoCaptions captions={captionData} />
+        <VideoCaptions captions={captions} />
       </div>
     </>
   );

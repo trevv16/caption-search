@@ -26,10 +26,20 @@ const getPlaylistData = async (playlistId: string) => {
   return data;
 };
 
+const getvideoCaptions = async (videoId: string) => {
+  try {
+    const data: any = await api.fetch(`${LAMBDA_URL}/videoCaptions?videoId=${videoId}`);
+
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 const stripUrlParam = (searchUrl: string, query: string): string => {
   const parsed = queryString.parse(searchUrl);
 
   return parsed[query];
 };
 
-export { isPlaylist, stripUrlParam, getPlaylistData, getChannelInfo };
+export { isPlaylist, stripUrlParam, getPlaylistData, getChannelInfo, getvideoCaptions };
