@@ -6,3 +6,5 @@ type PageProps = {
   image_alt: string;
   component: any;
 };
+
+declare module 'react-youtube-playlist';
