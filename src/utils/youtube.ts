@@ -21,9 +21,13 @@ const getChannelInfo = (channelId: string) => {
 };
 
 const getPlaylistData = async (playlistId: string) => {
-  const data: any = await api.fetch(`${LAMBDA_URL}/playlistVideos?playlistId=${playlistId}`);
+  try {
+    const data: any = await api.fetch(`${LAMBDA_URL}/playlistVideos?playlistId=${playlistId}`);
 
-  return data;
+    return data;
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 const getvideoCaptions = async (videoId: string) => {
