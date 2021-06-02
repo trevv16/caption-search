@@ -14,7 +14,6 @@ export default function VideoCaptions(props: any) {
     if (!(props.captions?.length > 0)) return;
 
     const searchResult = props.captions.filter((item: any) => {
-      console.log(item.text.includes(query));
       return item.text.includes(query);
     });
 
@@ -32,8 +31,6 @@ export default function VideoCaptions(props: any) {
   };
 
   const CaptionText = (data: any) => {
-    // captions.duration is available
-    console.log('captions', data);
     return data.captions.map((line: any) => {
       const cleanCaption = DOMPurify.sanitize(line.text);
       const cleanDuration = dayjs.duration(line.start, 'seconds').format('HH:mm:ss');
@@ -46,6 +43,7 @@ export default function VideoCaptions(props: any) {
           <h2>
             <span className='font-medium'>{'Duration: '}</span>
             {line.duration}
+            <span className='font-medium'>{'s'}</span>
           </h2>
           <p
             className='text-black mt-2 text-xl font-bold pb-4 border-b'
