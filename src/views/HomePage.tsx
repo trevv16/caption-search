@@ -24,11 +24,20 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
     setUrl(event.target.value);
   };
 
+  const ytTestVideoUrl = 'https://www.youtube.com/watch?v=McGNqqoe1I0';
+  const ytTestPlaylistUrl = 'https://www.youtube.com/playlist?list=PLHcsGizlfLMWpSg7i0b9wnUyEZWI-25N3';
+
   return (
     <>
       <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='max-w-3xl mx-auto my-80'>
+          <h1 className='my-4 text-lg font-medium text-indigo-600 hover:text-indigo-900'>
+            <a href={`/results?url=${ytTestVideoUrl}`}>Test with Youtube Video</a>
+          </h1>
+          <h1 className='my-4 text-lg font-medium text-indigo-600 hover:text-indigo-900'>
+            <a href={`/results?url=${ytTestPlaylistUrl}`}>Test with Youtube Playlist</a>
+          </h1>
           <div>
             <form onSubmit={handleSearch}>
               <div className='mt-1 relative rounded-md shadow-sm'>
