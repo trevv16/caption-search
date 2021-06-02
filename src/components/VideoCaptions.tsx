@@ -1,6 +1,7 @@
-import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
+import { nanoid } from 'nanoid';
 import { GoSearch } from 'react-icons/go';
+import DOMPurify from 'dompurify';
 
 export default function VideoCaptions(props: any) {
   const [query, setQuery] = useState<string>('');
@@ -17,6 +18,8 @@ export default function VideoCaptions(props: any) {
   const CaptionText = ({ captions }: any) => {
     // captions.duration is available
     return captions.map((line: any) => {
+      let cleanCaption = DOMPurify.sanitize(line.text);
+
       return (
         <div key={nanoid()} className='mt-6'>
           <button onClick={() => props.seek(line.start)} className='font-medium text-indigo-600 hover:text-indigo-900'>
@@ -26,7 +29,10 @@ export default function VideoCaptions(props: any) {
             <span className='font-medium'>{'Duration: '}</span>
             {line.duration}
           </h2>
-          <p className='text-black mt-2 text-xl font-bold pb-6 border-b'>{line.text}</p>
+          <p
+            className='text-black mt-2 text-xl font-bold pb-6 border-b'
+            dangerouslySetInnerHTML={{ __html: cleanCaption }}
+          ></p>
         </div>
       );
     });
