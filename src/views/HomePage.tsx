@@ -25,7 +25,7 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
   };
 
   const ytTestVideoUrl = 'https://www.youtube.com/watch?v=McGNqqoe1I0';
-  const ytTestPlaylistUrl = 'https://www.youtube.com/playlist?list=PLHcsGizlfLMWpSg7i0b9wnUyEZWI-25N3';
+  const ytTestPlaylistUrl = 'https://www.youtube.com/playlist?list=PLhKmHfWT5YmKq8M3lrpGBaUDRToxnUAJF';
 
   return (
     <>
@@ -36,7 +36,7 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
             <a href={`/results?url=${ytTestVideoUrl}`}>Test with Youtube Video</a>
           </h1>
           <h1 className='my-4 text-lg font-medium text-indigo-600 hover:text-indigo-900'>
-            <a href={`/results?url=${ytTestPlaylistUrl}`}>Test with Youtube Playlist</a>
+            <a href={`/playlist?url=${ytTestPlaylistUrl}`}>Test with Youtube Playlist</a>
           </h1>
           <div>
             <form onSubmit={handleSearch}>
