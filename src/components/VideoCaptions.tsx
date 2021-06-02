@@ -21,7 +21,7 @@ export default function VideoCaptions(props: any) {
       let cleanCaption = DOMPurify.sanitize(line.text);
 
       return (
-        <div key={nanoid()} className='mt-6'>
+        <div key={nanoid()} className='mt-4'>
           <button onClick={() => props.seek(line.start)} className='font-medium text-indigo-600 hover:text-indigo-900'>
             {line.start}
           </button>
@@ -30,7 +30,7 @@ export default function VideoCaptions(props: any) {
             {line.duration}
           </h2>
           <p
-            className='text-black mt-2 text-xl font-bold pb-6 border-b'
+            className='text-black mt-2 text-xl font-bold pb-4 border-b'
             dangerouslySetInnerHTML={{ __html: cleanCaption }}
           ></p>
         </div>
