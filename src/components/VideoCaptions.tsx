@@ -15,15 +15,15 @@ export default function VideoCaptions(props: any) {
   };
 
   const CaptionText = ({ captions }: any) => {
+    // captions.duration is available
     return captions.map((line: any) => {
       return (
         <div key={nanoid()} className='mt-6'>
-          <h1>
-            <span className='font-medium'>Start:</span>
+          <button onClick={() => props.seek(line.start)} className='font-medium text-indigo-600 hover:text-indigo-900'>
             {line.start}
-          </h1>
+          </button>
           <h2>
-            <span className='font-medium'>Duration:</span>
+            <span className='font-medium'>{'Duration: '}</span>
             {line.duration}
           </h2>
           <p className='text-black mt-2 text-xl font-bold pb-6 border-b'>{line.text}</p>
