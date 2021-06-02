@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { GoSearch } from 'react-icons/go';
 import DOMPurify from 'dompurify';
+import * as dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 
 export default function VideoCaptions(props: any) {
   const [query, setQuery] = useState<string>('');
+  dayjs.extend(duration); // use plugin
 
   const handleSearch = (e: any) => {
     e.preventDefault();
@@ -18,12 +21,13 @@ export default function VideoCaptions(props: any) {
   const CaptionText = ({ captions }: any) => {
     // captions.duration is available
     return captions.map((line: any) => {
-      let cleanCaption = DOMPurify.sanitize(line.text);
+      const cleanCaption = DOMPurify.sanitize(line.text);
+      const cleanDuration = dayjs.duration(line.start, 'seconds').format('HH:mm:ss');
 
       return (
         <div key={nanoid()} className='mt-4'>
           <button onClick={() => props.seek(line.start)} className='font-medium text-indigo-600 hover:text-indigo-900'>
-            {line.start}
+            {cleanDuration}
           </button>
           <h2>
             <span className='font-medium'>{'Duration: '}</span>
