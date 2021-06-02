@@ -41,6 +41,11 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
     };
   }, [urlParam]);
 
+  const handleSeek = (seconds: number) => {
+    // seekTo(seconds, 'seconds');
+    console.log(seconds, 'seconds');
+  };
+
   return (
     <>
       <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
@@ -48,7 +53,7 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
         <div className='max-w-3xl mx-auto mt-56 mb-24'>
           <ReactPlayer url={searchUrl} width='100%' />
         </div>
-        <VideoCaptions captions={captions} />
+        <VideoCaptions captions={captions} seek={handleSeek} />
       </div>
     </>
   );
