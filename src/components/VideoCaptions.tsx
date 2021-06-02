@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { GoSearch } from 'react-icons/go';
 import DOMPurify from 'dompurify';
@@ -7,7 +7,20 @@ import duration from 'dayjs/plugin/duration';
 
 export default function VideoCaptions(props: any) {
   const [query, setQuery] = useState<string>('');
+  const [results, setResults] = useState<any>(null);
   dayjs.extend(duration); // use plugin
+
+  useEffect(() => {
+    if (!(props.captions?.length > 0)) return;
+
+    const searchResult = props.captions.filter((item: any) => {
+      console.log(item.text.includes(query));
+      return item.text.includes(query);
+    });
+
+    if (!(searchResult?.length > 0)) return;
+    setResults(searchResult);
+  }, [props.captions, query]);
 
   const handleSearch = (e: any) => {
     e.preventDefault();
@@ -18,9 +31,10 @@ export default function VideoCaptions(props: any) {
     setQuery(event.target.value);
   };
 
-  const CaptionText = ({ captions }: any) => {
+  const CaptionText = (data: any) => {
     // captions.duration is available
-    return captions.map((line: any) => {
+    console.log('captions', data);
+    return data.captions.map((line: any) => {
       const cleanCaption = DOMPurify.sanitize(line.text);
       const cleanDuration = dayjs.duration(line.start, 'seconds').format('HH:mm:ss');
 
@@ -63,7 +77,9 @@ export default function VideoCaptions(props: any) {
             </div>
           </form>
         </div>
-        <div className='px-4 py-5 sm:p-6'>{props.captions && <CaptionText captions={props.captions} />}</div>
+        <div className='px-4 py-5 sm:p-6'>
+          {results !== null ? <CaptionText captions={results} /> : <CaptionText captions={props.captions} />}
+        </div>
       </div>
     </>
   );
