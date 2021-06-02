@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import { SeoHelmet, VideoCaptions } from '../components/index';
 import ReactPlayer from 'react-player/youtube';
 import { useLocation } from 'react-router-dom';
@@ -12,8 +12,10 @@ import { stripUrlParam, getvideoCaptions } from '../utils/youtube';
  */
 
 const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => {
+  const playerRef = useRef<any>(null);
   const location = useLocation();
   const urlParam = location.search;
+  const [isPaused, setIsPaused] = useState<boolean>(true);
   const [searchUrl, setSearchUrl] = useState<string>('');
   const [captions, setCaptions] = useState([]);
 
@@ -42,8 +44,11 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
   }, [urlParam]);
 
   const handleSeek = (seconds: number) => {
-    // seekTo(seconds, 'seconds');
-    console.log(seconds, 'seconds');
+    const node = playerRef.current;
+    node?.seekTo(seconds, 'seconds');
+
+    // Video does not autoplay without this
+    setIsPaused(true);
   };
 
   return (
@@ -51,7 +56,7 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
       <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='max-w-3xl mx-auto mt-56 mb-24'>
-          <ReactPlayer url={searchUrl} width='100%' />
+          <ReactPlayer ref={playerRef} url={searchUrl} playing={isPaused} width='100%' />
         </div>
         <VideoCaptions captions={captions} seek={handleSeek} />
       </div>
