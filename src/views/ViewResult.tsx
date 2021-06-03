@@ -18,7 +18,7 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
   const urlParam = location.search;
   const [isPaused, setIsPaused] = useState<boolean>(true);
   const [searchUrl, setSearchUrl] = useState<string>('');
-  const [captions, setCaptions] = useState([]);
+  const [captions, setCaptions] = useState(null);
 
   useEffect(() => {
     if (urlParam === undefined) return;
@@ -40,7 +40,7 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
 
     return () => {
       setSearchUrl('');
-      setCaptions([]);
+      setCaptions(null);
     };
   }, [urlParam]);
 
@@ -56,7 +56,7 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
     const pages = [{ name: 'Results', href: '', current: true }];
 
     return (
-      <nav className='mx-8 flex pt-12' aria-label='Breadcrumb'>
+      <nav className='flex pt-12' aria-label='Breadcrumb'>
         <ol className='flex items-center space-x-4'>
           <li>
             <div>
@@ -103,7 +103,11 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
         <div className='max-w-3xl mx-auto mt-56 mb-24'>
           <ReactPlayer ref={playerRef} url={searchUrl} playing={isPaused} width='100%' />
         </div>
-        <VideoCaptions captions={captions} seek={handleSeek} />
+        {captions !== null ? (
+          <VideoCaptions captions={captions} seek={handleSeek} />
+        ) : (
+          <p className='my-6 mx-auto text-2xl text-center text-gray-500'>No Captions Found</p>
+        )}
       </div>
     </>
   );
