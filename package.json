@@ -31,7 +31,7 @@
   "scripts": {
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "start": "craco start",
-    "build": "craco build",
+    "build": "craco build && echo '/* /index.html 200' | cat >build/_redirects",
     "test": "craco test",
     "eject": "react-scripts eject"
   },
