@@ -25,7 +25,7 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
   };
 
   const ytTestVideoUrl = 'https://www.youtube.com/watch?v=McGNqqoe1I0';
-  const ytTestPlaylistUrl = 'https://www.youtube.com/playlist?list=PLhKmHfWT5YmKq8M3lrpGBaUDRToxnUAJF';
+  const ytTestPlaylistUrl = 'https://www.youtube.com/playlist?list=PLphcdvnT8lOuZ1bOrb33GVM1GwG0cjpnB';
 
   return (
     <>
