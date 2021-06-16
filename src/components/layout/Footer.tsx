@@ -19,7 +19,7 @@ export default function Footer() {
             </a>
 
             <a
-              href='https://github.com/trevv16/soundboard-react'
+              href='https://github.com/trevv16/caption-search'
               target='_blank'
               rel='noopener noreferrer'
               className='text-gray-400 hover:text-gray-500'
