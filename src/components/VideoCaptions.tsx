@@ -31,10 +31,10 @@ export default function VideoCaptions(props: any) {
     setQuery(event.target.value);
   };
 
-  const CaptionText = (data: any) => {
+  const CaptionText = ({ captions }: any) => {
     return (
-      data &&
-      data.captions.map((line: any) => {
+      captions &&
+      captions.map((line: any) => {
         const cleanCaption = DOMPurify.sanitize(line.text);
         const cleanDuration = dayjs.duration(line.start, 'seconds').format('HH:mm:ss');
 
