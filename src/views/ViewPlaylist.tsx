@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { SeoHelmet, YoutubePlaylist } from '../components/index';
 import { useLocation } from 'react-router-dom';
 import { stripUrlParam, getPlaylistData } from '../utils/youtube';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { nanoid } from 'nanoid';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { SITE_NAME, SITE_IMG, SITE_IMG_ALT } from './Config';

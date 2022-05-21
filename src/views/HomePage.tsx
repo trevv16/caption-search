@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import { useState, FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { SeoHelmet } from '../components/index';
 import { GoSearch } from 'react-icons/go';

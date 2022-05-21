@@ -1,4 +1,3 @@
-import React from 'react';
 import { nanoid } from 'nanoid';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';

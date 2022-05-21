@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa';
 import { IoIosGlobe } from 'react-icons/io';
 

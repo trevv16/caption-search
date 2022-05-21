@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, FC } from 'react';
+import { useState, useEffect, useRef, FC } from 'react';
 import { SeoHelmet, VideoCaptions } from '../components/index';
 import ReactPlayer from 'react-player/youtube';
 import { useLocation } from 'react-router-dom';

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { SeoHelmet } from '../../components/index';
 
 const SignInPage: FC = () => {

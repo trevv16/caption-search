@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Alert(props: any) {
   const SuccessAlert = () => (
     <div className='rounded-md bg-success p-4'>
