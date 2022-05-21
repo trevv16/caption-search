@@ -11,14 +11,15 @@ export default function VideoCaptions(props: any) {
   dayjs.extend(duration); // use plugin
 
   useEffect(() => {
-    if (!(props.captions?.length > 0)) return;
+    if (props.captions && props.captions.length > 0) {
+      const searchResult = props.captions.filter((item: any) => {
+        return item.text.includes(query);
+      });
 
-    const searchResult = props.captions.filter((item: any) => {
-      return item.text.includes(query);
-    });
-
-    if (!(searchResult?.length > 0)) return;
-    setResults(searchResult);
+      if (searchResult?.length > 0) {
+        setResults(searchResult);
+      }
+    }
   }, [props.captions, query]);
 
   const handleSearch = (e: any) => {
@@ -31,28 +32,36 @@ export default function VideoCaptions(props: any) {
   };
 
   const CaptionText = (data: any) => {
-    return data.captions.map((line: any) => {
-      const cleanCaption = DOMPurify.sanitize(line.text);
-      const cleanDuration = dayjs.duration(line.start, 'seconds').format('HH:mm:ss');
+    return (
+      data &&
+      data.captions.map((line: any) => {
+        const cleanCaption = DOMPurify.sanitize(line.text);
+        const cleanDuration = dayjs.duration(line.start, 'seconds').format('HH:mm:ss');
 
-      return (
-        <div key={nanoid()} className='mt-4'>
-          <button onClick={() => props.seek(line.start)} className='font-medium text-indigo-600 hover:text-indigo-900'>
-            {cleanDuration}
-          </button>
-          <h2>
-            <span className='font-medium'>{'Duration: '}</span>
-            {line.duration}
-            <span className='font-medium'>{'s'}</span>
-          </h2>
-          <p
-            className='text-black mt-2 text-xl font-bold pb-4 border-b'
-            dangerouslySetInnerHTML={{ __html: cleanCaption }}
-          ></p>
-        </div>
-      );
-    });
+        return (
+          <div key={nanoid()} className='mt-4'>
+            <button
+              onClick={() => props.seek(line.start)}
+              className='font-medium text-indigo-600 hover:text-indigo-900'
+            >
+              {cleanDuration}
+            </button>
+            <h2>
+              <span className='font-medium'>{'Duration: '}</span>
+              {line.duration}
+              <span className='font-medium'>{'s'}</span>
+            </h2>
+            <p
+              className='text-black mt-2 text-xl font-bold pb-4 border-b'
+              dangerouslySetInnerHTML={{ __html: cleanCaption }}
+            ></p>
+          </div>
+        );
+      })
+    );
   };
+
+  console.log(props.captions);
 
   return (
     <>
@@ -75,9 +84,7 @@ export default function VideoCaptions(props: any) {
             </div>
           </form>
         </div>
-        <div className='px-4 py-5 sm:p-6'>
-          {results !== null ? <CaptionText captions={results} /> : <CaptionText captions={props.captions} />}
-        </div>
+        <div className='px-4 py-5 sm:p-6'>{results ? <CaptionText captions={results} /> : <p>{props.captions}</p>}</div>
       </div>
     </>
   );
