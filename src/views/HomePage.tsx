@@ -2,7 +2,6 @@ import { useState, FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { SeoHelmet } from '../components/index';
 import { GoSearch } from 'react-icons/go';
-
 import { isPlaylist } from '../utils/youtube';
 
 const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
