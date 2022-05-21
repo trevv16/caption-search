@@ -1,9 +1,11 @@
 import { useState, useEffect, FC } from 'react';
-import { SeoHelmet, YoutubePlaylist, Breadcrumbs, PlaylistHeader } from '../components/index';
+import { Helmet } from 'react-helmet-async';
+import { getSeo } from '../utils/seo';
+import { YoutubePlaylist, Breadcrumbs, PlaylistHeader } from '../components/index';
 import { useLocation } from 'react-router-dom';
 import { stripUrlParam, getPlaylistData } from '../utils/youtube';
 
-const ViewPlaylist: FC<PageProps> = ({ title, description, image, image_alt }) => {
+const ViewPlaylist: FC<PageProps> = ({ title }) => {
   const pages = [{ name: 'Playlist', href: '', current: true }];
   const location = useLocation();
   const urlParam = location.search;
@@ -30,7 +32,7 @@ const ViewPlaylist: FC<PageProps> = ({ title, description, image, image_alt }) =
 
   return (
     <>
-      <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
+      <Helmet>{getSeo(title)}</Helmet>
       <div className='max-w-8xl mx-auto px-4 sm:px-6 lg:px-8'>
         <Breadcrumbs pages={pages} />
         {playlist && (

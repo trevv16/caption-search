@@ -1,10 +1,11 @@
 import { useState, FC } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useHistory } from 'react-router-dom';
-import { SeoHelmet } from '../components/index';
 import { GoSearch } from 'react-icons/go';
+import { getSeo } from '../utils/seo';
 import { isPlaylist } from '../utils/youtube';
 
-const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
+const HomePage: FC<PageProps> = ({ title }) => {
   const [url, setUrl] = useState<string>('');
   const history = useHistory();
 
@@ -28,7 +29,7 @@ const HomePage: FC<PageProps> = ({ title, description, image, image_alt }) => {
 
   return (
     <>
-      <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
+      <Helmet>{getSeo(title)}</Helmet>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='max-w-3xl mx-auto my-80'>
           <h1 className='my-4 text-lg font-medium text-indigo-600 hover:text-indigo-900'>

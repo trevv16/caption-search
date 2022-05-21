@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, FC } from 'react';
-import { SeoHelmet, VideoCaptions, Breadcrumbs } from '../components/index';
+import { Helmet } from 'react-helmet-async';
+import { getSeo } from '../utils/seo';
+import { VideoCaptions, Breadcrumbs } from '../components/index';
 import ReactPlayer from 'react-player/youtube';
 import { useLocation } from 'react-router-dom';
 import { stripUrlParam, getvideoCaptions } from '../utils/youtube';
@@ -11,7 +13,7 @@ import { stripUrlParam, getvideoCaptions } from '../utils/youtube';
  * https://www.youtube.com/playlist?list=PLhKmHfWT5YmKq8M3lrpGBaUDRToxnUAJF
  */
 
-const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => {
+const ViewResult: FC<PageProps> = ({ title }) => {
   const pages = [{ name: 'Results', href: '', current: true }];
   const playerRef = useRef<any>(null);
   const location = useLocation();
@@ -57,7 +59,7 @@ const ViewResult: FC<PageProps> = ({ title, description, image, image_alt }) => 
 
   return (
     <>
-      <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
+      <Helmet>{getSeo(title)}</Helmet>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <Breadcrumbs pages={pages} />
         <div className='max-w-3xl mx-auto mt-56 mb-24'>
