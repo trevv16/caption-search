@@ -23,10 +23,6 @@ const ViewPlaylist: FC<PageProps> = ({ title, description, image, image_alt }) =
       if (result === undefined || result === null) return;
       const playlistData = result?.data.body;
       setPlaylist(playlistData);
-
-      // const channelData = getChannelInfo(playlistData.channelId);
-
-      // console.log('Channel:', channelData);
     });
 
     return () => {
@@ -100,12 +96,10 @@ const ViewPlaylist: FC<PageProps> = ({ title, description, image, image_alt }) =
       <SeoHelmet title={title} description={description} image={image} image_alt={image_alt} />
       <div className='max-w-8xl mx-auto px-4 sm:px-6 lg:px-8'>
         <Breadcrumbs />
-        {playlist && playlist !== null && (
+        {playlist && (
           <>
             <Header />
             <YoutubePlaylist data={playlist.items} />
-            {/* <div className='max-w-3xl mx-auto my-80'>
-            </div> */}
           </>
         )}
       </div>

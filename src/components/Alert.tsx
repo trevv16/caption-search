@@ -1,6 +1,11 @@
-export default function Alert(props: any) {
+interface AlertProps {
+  status: 'success' | 'warn' | 'error';
+  children: any;
+}
+
+export default function Alert(props: AlertProps) {
   const SuccessAlert = () => (
-    <div className='rounded-md bg-success p-4'>
+    <div className='my-16 rounded-md bg-success p-4'>
       <div className='flex'>
         <div className='flex-shrink-0'>
           {/* Heroicon name: solid/check-circle */}
@@ -50,7 +55,7 @@ export default function Alert(props: any) {
   );
 
   const WarnAlert = () => (
-    <div className='rounded-md bg-warningDark p-4'>
+    <div className='my-16 rounded-md bg-warningDark p-4'>
       <div className='flex'>
         <div className='flex-shrink-0'>
           {/* Heroicon name: solid/check-circle */}
@@ -100,7 +105,7 @@ export default function Alert(props: any) {
   );
 
   const ErrorAlert = () => (
-    <div className='rounded-md bg-danger p-4'>
+    <div className='my-16 rounded-md bg-danger p-4'>
       <div className='flex'>
         <div className='flex-shrink-0'>
           {/* Heroicon name: solid/check-circle */}
@@ -151,7 +156,7 @@ export default function Alert(props: any) {
 
   return (
     <>
-      {props.status !== null && props.message !== null ? (
+      {props.status !== null ? (
         <>
           {props.status === 'success' && <SuccessAlert />}
 
