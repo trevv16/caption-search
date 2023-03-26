@@ -32,10 +32,9 @@ const ViewResult: FC<PageProps> = ({ title }) => {
     if (id === undefined || id === null) return;
     getvideoCaptions(id).then((result) => {
       if (result === undefined || result === null) return;
-      const captionData = result?.data.body;
 
-      if (result?.data.status !== 500) {
-        setCaptions(captionData);
+      if (result.status !== 500) {
+        setCaptions(result.data.body);
       }
     });
 

@@ -18,7 +18,7 @@ const getPlaylistData = async (playlistId: string) => {
 
 const getvideoCaptions = async (videoId: string) => {
   try {
-    const data: any = await api.fetch(`${LAMBDA_URL}/videoCaptions?videoId=${videoId}`);
+    const data: any = await api.fetch(`${LAMBDA_URL}/captions-v2?video_id=${videoId}`);
 
     return data;
   } catch (err) {

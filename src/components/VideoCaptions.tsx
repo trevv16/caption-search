@@ -13,7 +13,7 @@ export default function VideoCaptions(props: any) {
   useEffect(() => {
     if (props.captions && props.captions.length > 0) {
       const searchResult = props.captions.filter((item: any) => {
-        return item.text.includes(query);
+        return item.text.toLowerCase().includes(query);
       });
 
       if (searchResult?.length > 0) {
@@ -84,7 +84,9 @@ export default function VideoCaptions(props: any) {
             </div>
           </form>
         </div>
-        <div className='px-4 py-5 sm:p-6'>{results ? <CaptionText captions={results} /> : <p>{props.captions}</p>}</div>
+        <div className='px-4 py-5 sm:p-6'>
+          {results ? <CaptionText captions={results} /> : <CaptionText captions={props.captions} />}
+        </div>
       </div>
     </>
   );
